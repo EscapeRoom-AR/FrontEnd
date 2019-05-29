@@ -2,17 +2,17 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameControler : MonoBehaviour
 {
     public static GameControler instance;
     public Text countdownValue;
     private int Countdown = 1800;                 
-
     public GameObject gameOvertext;               
     public bool gameOver = false;
-    public int gamePhase = 1;
-
+    public int gameStatus = 1;
+   
 
     void Awake()
     {
