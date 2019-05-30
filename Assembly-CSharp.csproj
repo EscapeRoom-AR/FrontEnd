@@ -68,10 +68,10 @@
     <Compile Include="Assets\Objects\torch\scripts\Torchelight.cs" />
     <Compile Include="Assets\Scripts\DetectTouch.cs" />
     <Compile Include="Assets\Scripts\fuego.cs" />
-    <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\model\GameController.cs" />
     <Compile Include="Assets\Scripts\model\InteractiveItem.cs" />
     <Compile Include="Assets\Scripts\model\Inventory.cs" />
+    <Compile Include="Assets\Scripts\model\InventoryButton.cs" />
     <Compile Include="Assets\Scripts\objectScripts\PaperHintController.cs" />
     <Compile Include="Assets\Scripts\objectScripts\PaperMouseDown.cs" />
     <Compile Include="Assets\Scripts\openTreasure.cs" />

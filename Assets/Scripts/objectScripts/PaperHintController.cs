@@ -8,25 +8,53 @@ public class PaperHintController : MonoBehaviour
     public GameObject modalPrefab;
     public Canvas canvas;
     public Inventory inventory;
-    public int papersPicked = 0;
-    private static string tag = "paper";
+    public int papersPicked;
+    private static string tag;
+    private GameObject modal;
+    public GameController gameController;
+    public Sprite allPapersSprite;
+    private bool isModalShown;
 
-    private void OnMouseDown()
+    private void Start()
     {
-        papersPicked++;
-        if (papersPicked == 4) Complete();
-        Debug.Log(gameObject.tag);
-        InteractiveItem item = new InteractiveItem(gameObject.GetComponent<Image>().sprite, tag);
-        inventory.addToInventory(item);
+        papersPicked = 1;
+        tag = "paper";
+        isModalShown = false;
+    }
+
+    public void PaperTapped(GameObject gameObject)
+    {
+        papersPicked += 1;
+        Sprite sprite = gameObject.GetComponent<Image>().sprite;
+        InteractiveItem item = new InteractiveItem(sprite, tag, () => ShowModal(sprite));
         Destroy(gameObject);
+        inventory.AddToInventory(item);
+        if (papersPicked == 4) Complete();
+        
+
     }
 
     private void Complete()
     {
-        inventory.removeItemsWithTag(tag);
-        GameObject modal = Instantiate(modalPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        inventory.RemoveItemsWithTag(tag);
+        InteractiveItem item = new InteractiveItem(gameObject.GetComponent<Image>().sprite, "FULLPAPER", () => ShowModal(allPapersSprite));
+        inventory.AddToInventory(item);
+        ShowModal(allPapersSprite);
+        gameController.NextPhase();
+    }
+    
+    private void ShowModal(Sprite sprite)
+    {
+        if (isModalShown)
+            return;
+        isModalShown = true;
+        modal = Instantiate(modalPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         modal.transform.SetParent(canvas.transform, false);
-        modal.transform.Find("Button").GetComponent<Button>().onClick.AddListener(() => Destroy(modal));
-    }   
+        modal.transform.Find("Content").Find("Image").GetComponent<Image>().sprite = sprite;
+        modal.transform.Find("ButtonHolder").Find("Button").GetComponent<Button>().onClick.AddListener(() => {
+            Destroy(modal);
+            isModalShown = false;
+        });
+    }
 }
 

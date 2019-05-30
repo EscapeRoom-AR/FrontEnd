@@ -1,18 +1,47 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Text countdownValue;
+    private int Countdown;
+    private int Status;
+
+    private void Start()
     {
-        
+        Status = 0;
+        Countdown = 1800;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Countdown <= 0)
+            timeUp();
+        else
+            CountDown();
+    }
+
+    public void NextPhase()
+    {
+        Status++;
+    }
+
+    public int GetStatus()
+    {
+        return Status;
+    }
+
+    public void CountDown()
+    {
+        Countdown--;
+        countdownValue.text = countdownValue.ToString();
+    }
+
+    public void timeUp()
+    {
+        SceneManager.LoadScene("EndScene");
     }
 }

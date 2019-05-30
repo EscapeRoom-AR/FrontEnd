@@ -27,18 +27,26 @@ public class Inventory : MonoBehaviour
         
     }
 
-    internal void removeItemsWithTag(string tag)
+    public void ButtonTapped(int index)
     {
-        foreach (InteractiveItem item in itemsInventory)
+        if (index < itemsInventory.Count)
+            itemsInventory[index].Callback();
+    }
+
+
+
+    public void RemoveItemsWithTag(string tag)
+    {
+        for (int i = 0; i < itemsInventory.Count; i++)
         {
-            if (item.tag.Equals(tag)) {
-                itemsInventory.Remove(item);
+            if (itemsInventory[i].Tag.Equals(tag)) {
+                itemsInventory.Remove(itemsInventory[i]);
             }
         }
         UpdateUI();
     }
 
-    public void addToInventory(InteractiveItem item) {
+    public void AddToInventory(InteractiveItem item) {
         itemsInventory.Add(item);
         UpdateUI();
     }
@@ -50,14 +58,12 @@ public class Inventory : MonoBehaviour
 
     private void UpdateUI()
     {
-        int i = 0;
-        foreach (Image item  in itemsImages)
+       for (int i = 0; i < itemsImages.Count; i++)
         {
             if (i < itemsInventory.Count)
-                item.sprite = itemsInventory[i].Sprite;
+                itemsImages[i].sprite = itemsInventory[i].Sprite;
             else
-                item.sprite = null;
-            i++;
+                itemsImages[i].sprite = null;
         }
     }
 

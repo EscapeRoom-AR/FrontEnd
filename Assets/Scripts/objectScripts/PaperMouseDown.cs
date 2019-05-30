@@ -9,9 +9,6 @@ public class PaperMouseDown : MonoBehaviour
     
     private void OnMouseDown()
     {
-        Debug.Log(gameObject.tag);
-        InteractiveItem item = new InteractiveItem(gameObject.GetComponent<Image>().sprite, tag);
-       // inventory.addToInventory(item);
-        Destroy(gameObject);
+        controller.PaperTapped(gameObject);
     }
 }

@@ -6,11 +6,15 @@ using UnityEngine.UI;
 public class InteractiveItem 
 {
     public Sprite Sprite;
-    public string tag;
+    public string Tag;
+    public InventoryTapCallback Callback;
 
-    public InteractiveItem(Sprite sprite, string tag)
+    public InteractiveItem(Sprite sprite, string tag, InventoryTapCallback callback)
     {
         Sprite = sprite;
-        tag = tag;
+        Tag = tag;
+        Callback = callback;
     }
+
+    public delegate void InventoryTapCallback();
 }

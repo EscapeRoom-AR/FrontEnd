@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5941511265910042721}
   m_Layer: 5
-  m_Name: Action Button
+  m_Name: ButtonHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -552,8 +552,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000061989, y: 31}
-  m_SizeDelta: {x: 625.8, y: 552.6}
+  m_AnchoredPosition: {x: 0.000012159, y: 16.1}
+  m_SizeDelta: {x: 629.4, y: 555.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5941511266387938899
 CanvasRenderer:
@@ -583,7 +583,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 556fac929d89ce94d9730f8be2016ef7, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
